@@ -4,22 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="chatbot.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>AI Personal Assistant</title>
 </head>
 <body>
-    <div class="chat-container">
-        <div class="chat-header">
-            <h2>AI Personal Assistant</h2>
-        </div>
-        <div class="chat-body" id="chatBody">
-            <!-- Chat messages will be displayed here -->
-        </div>
-        <div class="chat-input">
-            <input type="text" id="userInput" placeholder="Type your message...">
-            <button onclick="sendMessage()">Send</button>
-        </div>
-    </div>
+    <header>
+        <h1><i class="fa-solid fa-robot"></i>&nbspGenius</h1>
+    </header>
+    <main>
+        <section id="assistant">
+            <div id="chat-container">
+                <!-- Chat messages will be dynamically added here -->
+            </div>
+            <div id="user-input">
+                <div id="user-message-container">
+                    <input type="text" id="user-message" placeholder="Talk with Genius..." onkeypress="handleKeyPress(event)">
+                    <button id="send-button" onclick="sendMessage()"><i class="fa-solid fa-arrow-up" style="color: #ffff;"></i></button>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            fetchWelcomeMessage();
 
-    <script src="chatbot.js"></script>
+            const userInput = document.getElementById("user-message");
+            const sendButton = document.getElementById("send-button");
+
+            userInput.addEventListener("keypress", function (event) {
+                if (event.key === "Enter") {
+                    sendMessage();
+                }
+            });
+
+            sendButton.addEventListener("click", sendMessage);
+
+            function sendMessage() {
+                const userMessage = userInput.value;
+
+                if (userMessage.trim() !== "") {
+                    appendMessage("user", userMessage);
+                    simulateAIResponse(userMessage);
+                    userInput.value = "";
+                }
+            }
+
+            function appendMessage(sender, message) {
+                const chatContainer = document.getElementById("chat-container");
+                const messageDiv = document.createElement("div");
+                messageDiv.className = sender;
+                messageDiv.innerHTML = `<strong>${sender.charAt(0).toUpperCase() + sender.slice(1)}:</strong> ${message}`;
+                chatContainer.appendChild(messageDiv);
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            }
+
+            function simulateAIResponse(userMessage) {
+                    const aiResponse = "This is an example response from the AI.";
+                    appendMessage("ai", aiResponse);
+            }
+
+            function fetchWelcomeMessage() {
+                const welcomeMessage = "Hey there! I'm Genius, your AI Personal Assistant designed to bring a touch of innovation and joy to your day. Need answers, a friendly chat, or assistance with anything? Just let me know—I'm here to help! How can I brighten your day?";
+                appendMessage("Genius", welcomeMessage);
+            }
+        });
+    </script>
 </body>
 </html>
