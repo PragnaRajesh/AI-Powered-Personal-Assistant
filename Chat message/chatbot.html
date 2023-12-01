@@ -3,87 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="chatbot.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <title>AI Personal Assistant</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1><i class="fa-solid fa-robot"></i>&nbspGenius</h1>
-    </header>
-    <main>
-        <section id="assistant">
-            <div id="chat-container">
-                <!-- Chat messages will be dynamically added here -->
-            </div>
-            <div id="user-input">
-                <div id="user-message-container">
-                    <input type="text" id="user-message" placeholder="Talk with Genius..." onkeypress="handleKeyPress(event)">
-                    <button id="send-button" onclick="sendMessage()"><i class="fa-solid fa-arrow-up" style="color: #ffff;"></i></button>
-                </div>
-            </div>
-        </section>
-    </main>
+    <div id="assistant">
+        <div id="chat-container">
+            <!-- Chat messages will be dynamically added here -->
+        </div>
+        <div id="user-input">
+            <input type="text" id="user-message" placeholder="Talk with Genius..." onkeypress="handleKeyPress(event)">
+            <button id="send-button" onclick="sendMessage()"><i class="fa-solid fa-arrow-up" style="color: #ffff;"></i></button>
+        </div>
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script>
-        let userInput;
-
-        document.addEventListener("DOMContentLoaded", function () {
-
-
-            const userInput = document.getElementById("user-message");
-            const sendButton = document.getElementById("send-button");
-
-            sendButton.addEventListener("click", sendMessage);
-            userInput.addEventListener("keypress", handleKeyPress);
-            if (event.key === "Enter") {
-                sendMessage();
-            }
-        });
-
-        // Check if the welcome message has already been displayed
-        if (!localStorage.getItem("welcomeDisplayed")) {
-            fetchWelcomeMessage();
-            localStorage.setItem("welcomeDisplayed", "true");
-        }
-
-
-            // Fetch the welcome message once when the page loads
-            fetchWelcomeMessage();
-
-            function fetchWelcomeMessage() {
-                // Assuming you have a div with the ID "chat-container" for displaying messages
-                const chatContainer = document.getElementById("chat-container");
-
-                // Set the welcome message directly
-                const welcomeMessage = "Hey there! I'm Genius, your AI Personal Assistant designed to bring a touch of innovation and joy to your day. Need answers, a friendly chat, or assistance with anything? Just let me know—I'm here to help! How can I brighten your day?";
-                appendMessage("Genius", welcomeMessage);
-            }
-
-            function sendMessage() {
-                console.log("sendMessage function called");
-                const userMessage = userInput.value;
-
-                if (userMessage.trim() !== "") {
-                    appendMessage("user", userMessage);
-                    simulateAIResponse();
-                    userInput.value = "";
-                }
-            }
-
-            function simulateAIResponse() {
-                const aiResponse = "This is an example response from the AI.";
-                appendMessage("ai", aiResponse);
-            }
-
-            function appendMessage(sender, message) {
-                const chatContainer = document.getElementById("chat-container");
-                const messageDiv = document.createElement("div");
-                messageDiv.className = sender;
-                messageDiv.innerHTML = `<strong>${sender.charAt(0).toUpperCase() + sender.slice(1)}:</strong> ${message}`;
-                chatContainer.appendChild(messageDiv);
-                chatContainer.scrollTop = chatContainer.scrollHeight;
-            }
-    </script>    
+    <script src="script.js"></script>
 </body>
 </html>
