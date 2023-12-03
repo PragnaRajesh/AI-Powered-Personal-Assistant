@@ -1,63 +1,47 @@
-body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    background-image: url('https://pngtree.com/freebackground/technology-robot-blue-technology-sense-lines_1481946.html');
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    height: 100vh;
-}
+let userInput;
 
-#assistant {
-    max-width: 600px;
-    width: 100%;
-    background-color: rgba(255, 255, 255, 0.8);
-    border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    box-sizing: border-box;
-}
+        document.addEventListener("DOMContentLoaded", function () {
+            userInput = document.getElementById("user-message");
+            const sendButton = document.getElementById("send-button");
 
-#chat-container {
-    max-height: 400px;
-    overflow-y: auto;
-    margin-bottom: 20px;
-}
+            sendButton.addEventListener("click", sendMessage);
+            userInput.addEventListener("keypress", function (event) {
+                if (event.key === "Enter") {
+                    sendMessage();
+                }
+            });
 
-#user-input {
-    display: flex;
-    align-items: center;
-}
+            // Fetch the welcome message once when the page loads
+            fetchWelcomeMessage();
 
-#user-message {
-    flex: 1;
-    height: 40px;
-    padding: 8px;
-    border: 1px solid #000;
-    border-radius: 10px;
-    outline: none;
-    cursor: pointer;
-    font-size: 16px;
-}
+            function fetchWelcomeMessage() {
+                const chatContainer = document.getElementById("chat-container");
+                const welcomeMessage = "Hey there! I'm Genius, your AI Personal Assistant designed to bring a touch of innovation and joy to your day. Need answers, a friendly chat, or assistance with anything? Just let me know—I'm here to help! How can I brighten your day?";
+                appendMessage("Genius", welcomeMessage);
+            }
 
-#send-button {
-    padding: 8px;
-    background-color: #4caf50;
-    color: white;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 16px;
-    margin-left: 10px;
-}
+            function sendMessage() {
+                const userMessage = userInput.value;
 
-#send-button i {
-    font-size: 16px;
-}
+                if (userMessage.trim() !== "") {
+                    appendMessage("user", userMessage);
+                    simulateAIResponse();
+                    userInput.value = "";
+                }
+            }
 
-#send-button:hover {
-    background-color: #45a049;
-}
+            function simulateAIResponse() {
+                const aiResponse = "This is an example response from the AI.";
+                appendMessage("Genius", aiResponse);
+            }
+
+            function appendMessage(sender, message) {
+                const chatContainer = document.getElementById("chat-container");
+                const messageDiv = document.createElement("div");
+                messageDiv.className = sender;
+                messageDiv.innerHTML = `<strong>${sender.charAt(0).toUpperCase() + sender.slice(1)}:</strong> ${message}`;
+                chatContainer.appendChild(messageDiv);
+                chatContainer.scrollTop = chatContainer.scrollHeight;
+            }
+
+        });
