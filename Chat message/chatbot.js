@@ -16,8 +16,8 @@ let userInput;
 
             function fetchWelcomeMessage() {
                 const chatContainer = document.getElementById("chat-container");
-                const welcomeMessage = "Hey there! I'm Genius, your AI Personal Assistant designed to bring a touch of innovation and joy to your day. Need answers, a friendly chat, or assistance with anything? Just let me know—I'm here to help! How can I brighten your day?";
-                appendMessage("Genius", welcomeMessage);
+                const welcomeMessage = "Hey there! I'm Genius, your AI Personal Assistant designed to bring a touch of innovation and joy to your day. Need answers, a friendly chat, or assistance with anything? Just let me know—I'm here to help! How can I brighten your day?"
+                appendMessage("Genius",welcomeMessage);
             }
 
             function sendMessage() {

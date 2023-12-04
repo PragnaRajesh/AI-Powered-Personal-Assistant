@@ -7,11 +7,14 @@
     <title>AI Personal Assistant</title>
     <style>
         body {
-            background-image: url('xyz.jpg');
-            background-height: "100vh";
+            background-color: #607FD0;
+            height: 100vh;
             background-size: cover;
             background-position: center;
             margin: 0;
+            font-family: 'Inter';
+            overflow: hidden;
+            padding: 0;
         }
 
         header {
@@ -21,14 +24,22 @@
 
         header h1 {
             margin: 0;
+            color:white;
+        }
+
+        main {
+            padding: 20px;
         }
 
         #assistant {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
+            max-height: 600px;
+            overflow-y: hidden;
+            background-color: transparent;
+            padding-right: 2.5rem;
+            padding-left: 45rem;
+            padding-bottom: 10px;
+            padding-top: 10px;
+            color:white;
         }
 
         #chat-container {
@@ -38,38 +49,47 @@
             overflow: hidden;
         }
 
+        #user-message {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
         #user-input {
             position: fixed;
             bottom: 20px;
-            left: 50%;
+            left: 67rem;
             transform: translateX(-50%);
             padding: 10px;
             border-radius: 20px;
-            background: rgba(255, 255, 255, 0.8);
-            width: 100%;
-            box-sizing: border-box;
+        }
+
+        #user-message-container {
+            display: flex;
+            align-items: center;
         }
 
         #user-message {
-            width: calc(100% - 60px);
+            flex:1;
+            width: 600px;
+            height: 40px;
             padding: 8px;
-            border: 1px solid #000;
+            border: 1px solid #ffff;
             border-radius: 10px;
             outline: none;
             cursor: pointer;
-            position: relative;
+            position:relative;
             font-size: 20px;
         }
 
         #send-button {
-            padding: 8px;
             background-color: #4caf50;
             color: white;
             border: none;
+            border-radius: 3px;
             border-radius: 10px;
             cursor: pointer;
-            font-size: 20px;
-            position: relative;
+            font-size:20px;
+            position:relative;
             right: 0;
             top: 50%;
             border-radius: 50% 50% 50% 50%;
@@ -85,11 +105,12 @@
         #send-button:hover {
             background-color: #45a049;
         }
+
     </style>
 </head>
 <body>
     <header>
-        <h1><i class="fa-solid fa-robot"></i>&nbspGenius</h1>
+        <h1><i class="fa-solid fa-robot"style="color:white;"></i>&nbspGenius</h1>
     </header>
     <div id="assistant">
         <div id="chat-container">
@@ -97,7 +118,7 @@
         </div>
         <div id="user-input">
             <input type="text" id="user-message" placeholder="Talk with Genius..." onkeypress="handleKeyPress(event)">
-            <button id="send-button" onclick="sendMessage()"><i class="fa-solid fa-arrow-up" style="color: #ffff;"></i></button>
+            <button id="send-button" onclick="sendMessage()"><i class="fa-solid fa-arrow-up" style="color: white;"></i></button>
         </div>
     </div>
 
