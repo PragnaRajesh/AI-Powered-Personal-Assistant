@@ -1,5 +1,3 @@
-let userInput;
-
 document.addEventListener("DOMContentLoaded", function () {
     userInput = document.getElementById("user-message");
     const sendButton = document.getElementById("send-button");
@@ -16,38 +14,40 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function fetchWelcomeMessage() {
         const welcomeMessage = "Hey there! I'm Genius, your AI Personal Assistant designed to bring a touch of innovation and joy to your day. Need answers, a friendly chat, or assistance with anything? Just let me know—I'm here to help! How can I brighten your day?";
-        appendMessage("Genius",welcomeMessage,true);
+        appendMessage("Genius", welcomeMessage, true);
     }
-
 
     function sendMessage() {
         const userMessage = userInput.value.trim();
-
         if (userMessage !== "") {
             appendMessage("user", userMessage);
-            callDialogflow(userMessage);
+            handleUserInput(userMessage);
             userInput.value = "";
         }
     }
+
     function handleUserInput(userMessage) {
-        if(userMessage.toLowerCase().includes("hello!") || userMessage.toLowerCase().includes("hi")){
+        const lowerCaseMessage = userMessage.toLowerCase();
+        
+        if(lowerCaseMessage.includes("hello") || lowerCaseMessage.includes("hi")){
             greetUser();
-        }else if (userMessage.toLowerCase().includes("tell me a joke")){
+        } else if (lowerCaseMessage.includes("tell me a joke")){
             tellJoke();
-        }else if (userMessage.toLowerCase().includes("give me today's news update")){
+        } else if (lowerCaseMessage.includes("what's the latest news")){
             getNews();
-        } else if (userMessage.toLowerCase().includes("shopping")){
+        } else if (lowerCaseMessage.includes("shopping")){
             provideShoppingTips();
-        } else if (userMessage.toLowerCase().includes("relationship advice")){
+        } else if (lowerCaseMessage.includes("relationship advice")){
             offerRelationshipAdvice();
-        } else if (userMessage.toLowerCase().includes("vent")){
+        } else if (lowerCaseMessage.includes("vent")){
             provideListeningEar();
-        } else if (userMessage.toLowerCase().includes("speech") || userMessage.toLowerCase().includes("text help")){
+        } else if (lowerCaseMessage.includes("speech") || lowerCaseMessage.includes("text help")){
             assistWithSpeechOrText();
-        }else{
+        } else {
             callDialogflow(userMessage);
         }
     }
+
     function greetUser() {
         const greeting = "Hey! what’s on your mind  today?";
         appendMessage("Genius", greeting);

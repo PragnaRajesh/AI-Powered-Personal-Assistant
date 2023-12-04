@@ -1,16 +1,22 @@
 {
-  "dependencies": {
-    "body-parser": "^1.20.2",
-    "express": "^4.18.2",
-    "package.json": "^2.0.1"
-  },
-  "name": "ai-powered-personal-assistant",
-  "description": "",
+  "name": "email-subscription",
   "version": "1.0.0",
-  "main": "chatbot.js",
+  "description": "Email Subscription Project",
+  "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "nodemon": "^2.0.12"
+  },
+  "keywords": [],
   "author": "",
   "license": "ISC"
 }

@@ -1,3 +1,51 @@
+document.addEventListener("DOMContentLoaded", function() {
+    var emailInput = document.getElementById("email");
+    var passwordInput = document.getElementById("password");
+    var emailError = document.getElementById("emailError");
+    var passwordError = document.getElementById("passwordError");
+
+    emailInput.addEventListener("input", function() {
+        validateEmail();
+    });
+
+    passwordInput.addEventListener("input", function() {
+        validatePassword();
+    });
+
+    function validateEmail() {
+        var email = emailInput.value;
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!email) {
+            emailError.textContent = "Email is required";
+        } else if (!emailRegex.test(email)) {
+            emailError.textContent = "Invalid email address";
+        } else {
+            emailError.textContent = "";
+        }
+    }
+
+    function validatePassword() {
+        var password = passwordInput.value;
+        if (!password) {
+            passwordError.textContent = "Password is required";
+        } else if (password.length < 6) {
+            passwordError.textContent = "Password must be at least 6 characters";
+        } else {
+            passwordError.textContent = "";
+        }
+    }
+
+    document.getElementById("loginForm").addEventListener("submit", function(event) {
+        event.preventDefault();
+        validateEmail();
+        validatePassword();
+        if (!emailError.textContent && !passwordError.textContent) {
+            // All validations passed, handle login logic here
+            console.log("Form is valid. Proceed with login.");
+            // You can call a function to handle login here
+        }
+    });
+});
 function setFormMessage(formElement, type, message) {
     const messageElement = formElement.querySelector(".form__message");
 

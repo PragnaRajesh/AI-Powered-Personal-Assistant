@@ -20,10 +20,12 @@
         header {
             padding: 1em;
             text-align: left;
+            font-size: 50px;
+            
         }
 
         header h1 {
-            margin: 0;
+            margin: -40px;
             color:white;
         }
 
@@ -32,22 +34,28 @@
         }
 
         #assistant {
-            max-height: 600px;
+            max-height: 200px;
+            height: 100px;
             overflow-y: hidden;
             background-color: transparent;
             padding-right: 2.5rem;
-            padding-left: 45rem;
+            padding-left: 0.75rem;
             padding-bottom: 10px;
             padding-top: 10px;
-            color:white;
-        }
+            font-style: 'Inter';
+            }
 
         #chat-container {
-            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            max-width: 100%;
             margin: auto;
-            border-radius: 8px;
+            padding: 20px;
             overflow: hidden;
+            color:white;
+            font-style: 'Inter';
         }
+
 
         #user-message {
             word-wrap: break-word;
@@ -57,7 +65,7 @@
         #user-input {
             position: fixed;
             bottom: 20px;
-            left: 67rem;
+            left: 50%;
             transform: translateX(-50%);
             padding: 10px;
             border-radius: 20px;
@@ -71,9 +79,9 @@
         #user-message {
             flex:1;
             width: 600px;
-            height: 40px;
+            height: 50px;
             padding: 8px;
-            border: 1px solid #ffff;
+            border: 1px solid #000;
             border-radius: 10px;
             outline: none;
             cursor: pointer;
@@ -82,22 +90,24 @@
         }
 
         #send-button {
+            padding: 8px;
             background-color: #4caf50;
             color: white;
             border: none;
-            border-radius: 3px;
             border-radius: 10px;
             cursor: pointer;
             font-size:20px;
-            position:relative;
+            position:center;
             right: 0;
             top: 50%;
             border-radius: 50% 50% 50% 50%;
             transform: translateY(-50%);
-            margin-top: 38px;
-            margin-left: -40px;
-        }
+            padding: 8px 12px;
+            margin: -40px; 
+            margin-bottom:auto;
 
+        }
+            
         #send-button i {
             font-size: 20px;
         }
@@ -107,10 +117,11 @@
         }
 
     </style>
+
 </head>
 <body>
     <header>
-        <h1><i class="fa-solid fa-robot"style="color:white;"></i>&nbspGenius</h1>
+        <h1><i class="fa-solid fa-robot"style="color:white;"></i><strong>&nbspGenius</strong></h1>
     </header>
     <div id="assistant">
         <div id="chat-container">
